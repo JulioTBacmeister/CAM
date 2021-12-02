@@ -2161,6 +2161,7 @@ subroutine gw_rdg_calc( &
          call outfld('TAU1RDG'//trim(type)//'M', tau(:,0,:),  ncol, lchnk)
          call outfld('UBM1'//trim(type),         ubm,         ncol, lchnk)
          call outfld('UBT1RDG'//trim(type),      gwut,        ncol, lchnk)
+!  where are my changes??
       end if
 
       if (nn <= 6) then
