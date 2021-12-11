@@ -1,4 +1,5 @@
-#define SCAMRUN
+!!!#define SCAMRUN
+#undef SCAMRUN
 module nudging
 !=====================================================================
 !
