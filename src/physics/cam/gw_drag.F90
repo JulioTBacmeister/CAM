@@ -234,8 +234,8 @@ subroutine gw_drag_readnl(nlfile)
        gw_lndscl_sgh, gw_prndl, gw_apply_tndmax, gw_qbo_hdepth_scaling, &
        gw_top_taper
   !----------------------------------------------------------------------
-  ! YOLO 12/8/21
-  !--------------
+  ! Gratuitous mod to learn git Dec 2021
+  !----------------------------------------------------------------------
   if (use_simple_phys) return
 
   if (masterproc) then

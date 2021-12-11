@@ -1,7 +1,14 @@
 !!!#define SCAMRUN
 #undef SCAMRUN
 module nudging
+!++jtb
 !=====================================================================
+! Don't like using #define to control nudging with SCAM 
+! but haven't figured out better way given that some variables 
+! need to be (are) dimensioned differently when single column
+! is being run. -12/11/21 
+!=====================================================================
+!--jtb
 !
 ! Purpose: Implement Nudging of the model state of U,V,T,Q, and/or PS
 !          toward specified values from analyses. 
