@@ -1,12 +1,18 @@
-!!!#define SCAMRUN
+#if PCOLS=1
+#define SCAMRUN
+#else
 #undef SCAMRUN
+#endif
 module nudging
 !++jtb
 !=====================================================================
 ! Don't like using #define to control nudging with SCAM 
 ! but haven't figured out better way given that some variables 
 ! need to be (are) dimensioned differently when single column
-! is being run. -12/11/21 
+! is being run. (12/11/21) 
+!
+! Using PCOLS=1 to key off of may be an interim solution, and this 
+! is interim code anyway (12/12/21)
 !=====================================================================
 !--jtb
 !
