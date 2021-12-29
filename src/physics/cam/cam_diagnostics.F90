@@ -376,6 +376,11 @@ contains
     end if
 
     ! outfld calls in physpkg
+!++jtb
+    call addfld('UTEND_CORE', (/ 'lev' /), 'A', 'm/s2' , 'Zonal wind tendency due to dynamical core')
+    call addfld('VTEND_CORE', (/ 'lev' /), 'A', 'm/s2' , 'Meridional wind tendency due to dynamical core')
+    call register_vector_field('UTEND_CORE','VTEND_CORE')
+!--jtb
     call addfld ( 'UTEND_DCONV', (/ 'lev' /), 'A', 'm/s2', 'Zonal wind tendency by deep convection')
     call addfld ( 'VTEND_DCONV', (/ 'lev' /), 'A', 'm/s2', 'Meridional wind tendency by deep convection')
     call register_vector_field ( 'UTEND_DCONV', 'VTEND_DCONV')
