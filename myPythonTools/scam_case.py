@@ -265,8 +265,13 @@ class scam_case:
         cmd = ( "cp ../../myPythonTools/STUB_iop.nc"  + " "
             + ensemble_root + "/"+case_tag+"/run/")
         sp.run(cmd   ,    shell=True )
-        cmd = ( "cp ../../myPythonTools/ens_run.sh"  + " "
-            + ensemble_root + "/"+case_tag+"/run/")
+        if self.machine == "cheyenne":
+            cmd = ( "cp ../../myPythonTools/ens_run_cheyenne.sh"  + " "
+                + ensemble_root + "/"+case_tag+"/run/ens_run.sh")
+        elif self.machine == "izumi":
+            cmd = ( "cp ../../myPythonTools/ens_run.sh"  + " "
+                + ensemble_root + "/"+case_tag+"/run/")
+
         sp.run(cmd   ,    shell=True )
 
         cd0 ="cd "+ ensemble_root + "/" +  case_tag +"/run ;" 
@@ -301,8 +306,11 @@ class scam_case:
         import subprocess as sp
         import os
 
-        cd0 ="cd "+ self.ensemble_root + "/" +  self.name +"/run ;" 
-        cmd ="/usr/local/torque/bin/qsub ens_run.sh"
+        cd0 ="cd "+ self.ensemble_root + "/" +  self.name +"/run ;"
+        if self.machine == "cheyenne":
+            cmd = "qsub ens_run.sh"
+        elif self.machine == "izumi": 
+            cmd ="/usr/local/torque/bin/qsub ens_run.sh"
 
         sp.run(cd0 + cmd   ,    shell=True )
 
