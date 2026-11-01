@@ -303,9 +303,15 @@ end subroutine radheat_readnl
    ! Setting idealized M/LT SW to scaled cosine solar zenith angle
 
    qrs_mlt_prof = qrs_mlt_profile_a( zref_mid_7km )
+!++ ClaudeCode 10/26/26
+   ! qrs_mlt_profile_a returns K/day, so /86400 gives K/s.  Multiply by cpair so that
+   ! qrs_mlt is in energy units (J/kg/s), consistent with qrs from radiation and with
+   ! qrl_mlt from nlte_fomichev_calc.  merge_qrx blends without any cpair conversion,
+   ! so an unconverted K/s term would enter qrs_mrg a factor of cpair too small.
    do k = 1,pver
-      qrs_mlt(:ncol,k) = qrsmlt_scaling * qrs_mlt_prof(k) * max( coszrs(:ncol) , 0._r8 ) / 86400._r8
+      qrs_mlt(:ncol,k) = cpair * qrsmlt_scaling * qrs_mlt_prof(k) * max( coszrs(:ncol) , 0._r8 ) / 86400._r8
    end do
+!--
 
    icall = 0
 
